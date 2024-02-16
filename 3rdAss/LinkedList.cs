@@ -51,7 +51,7 @@ public class LinkedList
         if (first == null)
         {
             Console.WriteLine("The list is completely empty . There is no such key here .");
-            return new KeyValuePair("" , "") ;
+            return null ;
         }
 
         while ( true ) 
@@ -63,7 +63,7 @@ public class LinkedList
             if ( current.Next == null )
             {
                 Console.WriteLine("Wrong key ! It doesn^t exist in a list .") ;
-                return new KeyValuePair("" , "") ;
+                return null ;
             }
             current = current.Next ;
         }

@@ -51,7 +51,7 @@ public class StringsDictionary
     {
         if (buckets[CalculateHash(key) % Size] == null )
         {
-            return "No such KEY in my data ." ;
+            return null ;
         }
         return buckets[CalculateHash(key) % Size].GetItemWithKey(key).Value ;
     }
