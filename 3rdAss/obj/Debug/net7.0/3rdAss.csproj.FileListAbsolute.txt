@@ -1,0 +1,14 @@
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\bin\Debug\net7.0\3rdAss.exe
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\bin\Debug\net7.0\3rdAss.deps.json
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\bin\Debug\net7.0\3rdAss.runtimeconfig.json
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\bin\Debug\net7.0\3rdAss.dll
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\bin\Debug\net7.0\3rdAss.pdb
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\obj\Debug\net7.0\3rdAss.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\obj\Debug\net7.0\3rdAss.AssemblyInfoInputs.cache
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\obj\Debug\net7.0\3rdAss.AssemblyInfo.cs
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\obj\Debug\net7.0\3rdAss.csproj.CoreCompileInputs.cache
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\obj\Debug\net7.0\3rdAss.dll
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\obj\Debug\net7.0\refint\3rdAss.dll
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\obj\Debug\net7.0\3rdAss.pdb
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\obj\Debug\net7.0\3rdAss.genruntimeconfig.cache
+C:\Users\iskos\RiderProjects\3rdAss\3rdAss\obj\Debug\net7.0\ref\3rdAss.dll
