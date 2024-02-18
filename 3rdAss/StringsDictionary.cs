@@ -11,34 +11,7 @@ public class StringsDictionary
         var slot = CalculateHash(key) % Size ;
         if (buckets[slot] == null) { buckets[slot] = new BST() ; }
         buckets[slot].add(new KeyValuePair(key , value)) ;
-
-        // if (LoadFactor() > 0.7)
-        // {
-        //     Size *= 2 ;
-        //     LinkedList[] newBuckets = new LinkedList[Size] ;
-        //     foreach (var LL in buckets)
-        //     {
-        //         foreach ( var pair in LL.GetAllPairs () )
-        //         {
-        //             slot = CalculateHash(pair.Key) % Size ;
-        //             if (newBuckets[slot] == null)
-        //             {
-        //                 newBuckets[slot] = new LinkedList() ;
-        //             }
-        //             newBuckets[ slot ].Add( pair ) ;
-        //         }
-        //     }
-        //     buckets = newBuckets ;
-        // }
     }
-    
-    // public void Remove(string key)
-    // {
-    //     if (buckets[CalculateHash(key) % Size] != null)
-    //     {
-    //         buckets[CalculateHash(key) % Size].RemoveByKey(key);
-    //     }
-    // }
     
     public string Get(string key)
     {
