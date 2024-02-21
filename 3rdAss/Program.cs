@@ -9,6 +9,7 @@ class Program
         {
             var key = row.Split("|")[0] ;
             var value = row.Split("|")[2] ;
+            
             dict.Add( key , value ) ;
         }
 

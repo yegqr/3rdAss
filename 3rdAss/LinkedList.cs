@@ -4,6 +4,18 @@ public class LinkedList
 {
     private LinkedListNode first;
     private LinkedListNode lastNode ;
+    private BST collisions { get; set; }
+
+    
+    public LinkedList(BST damm)
+    {
+        collisions = damm ;
+    }
+
+    public BST GetCollisions()
+    {
+        return collisions ;
+    }
     
     public void Add(KeyValuePair pair)
     {
@@ -16,6 +28,16 @@ public class LinkedList
         {
             lastNode.Next = new LinkedListNode( pair ) ;
             lastNode = lastNode.Next ;
+        }
+
+        var current = first ;
+        while ( current != lastNode )
+        {
+            if (current.Pair.Key.Equals(pair.Key))
+            {
+                collisions.add(pair);
+            }
+            current = current.Next ;
         }
     }
 
@@ -45,7 +67,7 @@ public class LinkedList
         }
     }
 
-    public KeyValuePair GetItemWithKey(string key)
+    public string GetItemWithKey(string key)
     {
         var current = first ;
         if (first == null)
@@ -58,7 +80,12 @@ public class LinkedList
         {
             if ( current.Pair.Key.Equals( key ) )
             {
-                return current.Pair ;
+                var tryCollisions = collisions.GetValueWithKey(key);
+                if (tryCollisions != null)
+                {
+                    return $"{current.Pair.Value} || {tryCollisions}" ;
+                }
+                return current.Pair.Value ;
             }
             if ( current.Next == null )
             {

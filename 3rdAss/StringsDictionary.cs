@@ -11,7 +11,7 @@ public class StringsDictionary
         var slot = CalculateHash(key) % Size ;
         if (buckets[slot] == null)
         {
-            buckets[slot] = new LinkedList() ;
+            buckets[slot] = new LinkedList(new BST()) ;
         }
         buckets[slot].Add(new KeyValuePair(key , value)) ;
 
@@ -19,16 +19,17 @@ public class StringsDictionary
         {
             Size *= 2 ;
             LinkedList[] newBuckets = new LinkedList[Size] ;
+            
             foreach (var LL in buckets)
             {
                 foreach ( var pair in LL.GetAllPairs () )
                 {
-                    slot = CalculateHash(pair.Key) % Size ;
-                    if (newBuckets[slot] == null)
+                    var newSlot = CalculateHash(pair.Key) % Size ;
+                    if (newBuckets[newSlot] == null)
                     {
-                        newBuckets[slot] = new LinkedList() ;
+                        newBuckets[newSlot] = new LinkedList(buckets[slot].GetCollisions() ) ;
                     }
-                    newBuckets[ slot ].Add( pair ) ;
+                    newBuckets[ newSlot ].Add( pair ) ;
                 }
             }
             buckets = newBuckets ;
@@ -53,7 +54,7 @@ public class StringsDictionary
         {
             return null ;
         }
-        return buckets[CalculateHash(key) % Size].GetItemWithKey(key).Value ;
+        return buckets[CalculateHash(key) % Size].GetItemWithKey(key) ;
     }
     
 
