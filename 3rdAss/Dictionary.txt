@@ -3169,7 +3169,7 @@ strive|verb|to exert oneself vigorously; try hard|http://www.dictionary.com/brow
 stroke|noun|the act or an instance of striking, as with the fist, a weapon, or a hammer; a blow.|http://www.dictionary.com/browse/stroke
 stroll|verb|to walk leisurely as inclination directs; ramble; saunter; take a walk|http://www.dictionary.com/browse/stroll
 structure|noun|mode of building, construction, or organization; arrangement of parts, elements, or constituents|http://www.dictionary.com/browse/structure
-structure|noun|mode of building, construction, or organization; arrangement of parts, elements, or constituents|http://www.dictionary.com/browse/structure
+structure|noun|w|http://www.dictionary.com/browse/structure
 struggle|verb|to contend with an adversary or opposing force.|http://www.dictionary.com/browse/struggle
 strum|verb|to play on (a stringed musical instrument) by running the fingers lightly across the strings.|http://www.dictionary.com/browse/strum
 strut|verb|to walk with a vain, pompous bearing, as with head erect and chest thrown out, as if expecting to impress observers.|http://www.dictionary.com/browse/strut

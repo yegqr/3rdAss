@@ -72,14 +72,13 @@ public class BST
     
     public string GetValueWithKey( string key )
     {
+        if (pair == null)
+        {
+            return null;
+        }
         if ( pair.Key == key )
         {
             return pair.Value ;
-        }
-
-        if (pair.Key == null)
-        {
-            return null;
         }
         var current = CalculateHash( key ) > pairValue ? greater : lesser ;
         if (current == null)

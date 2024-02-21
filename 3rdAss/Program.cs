@@ -16,7 +16,7 @@ class Program
         while (true)
         {
             Console.WriteLine("Write the word , which definition you want to get .");
-            var input = Console.ReadLine().Trim();
+            var input = Console.ReadLine().Trim().ToLower();
             Console.WriteLine($"{input} => {dict.Get(input)}\n");
             if (input == "STOP")
             {
