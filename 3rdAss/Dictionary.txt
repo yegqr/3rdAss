@@ -3728,4 +3728,4 @@ yesterday|adverb|on the day preceding this day.|http://www.dictionary.com/browse
 yieldingly|adjective|inclined to give in; submissive; compliant|http://www.dictionary.com/browse/yieldingly
 youthfully|adjective|characterized by youth; young.|http://www.dictionary.com/browse/youthfully
 zealously|adjective|full of, characterized by, or due to zeal; ardently active, devoted, or diligent.Synonyms|http://www.dictionary.com/browse/zealously
-zestfully|adjective|full of zest.|http://www.dictionary.com/browse/zestfully
+zestfully|adjective|full of zest.|http://www.dictionary.com/browse/zestfully 

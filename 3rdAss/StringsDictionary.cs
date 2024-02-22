@@ -2,80 +2,81 @@
 
 public class StringsDictionary
 {
-    private static int Size = 10;
+    private static int Size = 10 ;
 
-    private LinkedList[] buckets = new LinkedList[Size];
+    private LinkedList[] buckets = new LinkedList[Size] ;
     
-    public void Add(string key, string value)
+    public void Add( string key , string value )
     {
-        var slot = CalculateHash(key) % Size ;
-        if (buckets[slot] == null)
+        var slot = CalculateHash( key ) % Size ;
+        if ( buckets[ slot ] == null)
         {
-            buckets[slot] = new LinkedList(new BST()) ;
+            buckets[ slot ] = new LinkedList() ;
         }
-        buckets[slot].Add(new KeyValuePair(key , value)) ;
+        buckets[ slot ].Add( new KeyValuePair( key , value ) ,  CalculateHash( key ) ) ;
 
-        if (LoadFactor() > 0.7)
+        if ( LoadFactor() > 5 )
         {
-            Size *= 2 ;
-            LinkedList[] newBuckets = new LinkedList[Size] ;
+            Size *= 4 ;
+            LinkedList[] newBuckets = new LinkedList[ Size ] ;
             
-            foreach (var LL in buckets)
+            foreach ( var LL in buckets )
             {
+                if ( LL == null ) { continue ; }
                 foreach ( var pair in LL.GetAllPairs () )
                 {
                     var newSlot = CalculateHash(pair.Key) % Size ;
-                    if (newBuckets[newSlot] == null)
+                    if ( newBuckets[ newSlot ] == null )
                     {
-                        newBuckets[newSlot] = new LinkedList(buckets[slot].GetCollisions() ) ;
+                        newBuckets[ newSlot ] = new LinkedList() ;
                     }
-                    newBuckets[ newSlot ].Add( pair ) ;
+                    newBuckets[ newSlot ].Add( pair ,  newSlot ) ;
                 }
             }
             buckets = newBuckets ;
         }
     }
     
-    public void Remove(string key)
+    public void Remove( string key )
     {
-        if (buckets[CalculateHash(key) % Size] == null)
+        if ( buckets[ CalculateHash( key ) % Size ] == null )
         {
-            Console.WriteLine("No such KEY in my data .");
+            Console.WriteLine( "No such KEY in my data ." ) ;
         }
         else
         {
-            buckets[CalculateHash(key) % Size].RemoveByKey(key);
+            buckets[ CalculateHash( key ) % Size ].RemoveByKey( key ) ;
         }
     }
     
-    public string Get(string key)
+    public string Get( string key )
     {
-        if (buckets[CalculateHash(key) % Size] == null )
-        {
-            return null ;
-        }
-        return buckets[CalculateHash(key) % Size].GetItemWithKey(key) ;
+        return buckets[CalculateHash(key) % Size] == null ?
+            null : buckets[CalculateHash(key) % Size].GetItemWithKey(key , CalculateHash(key));
     }
     
 
     private int CalculateHash( string key )
     {
+        const int prime = 79 ; 
         var result = 0 ;
         foreach ( var elemant in key )
         {
-            result += Convert.ToChar(elemant) ;
+            result = result * prime + elemant ;
         }
-        return result ; 
+        return Math.Abs( result ) ; 
     }
 
     private float LoadFactor()
     {
-        var full = 0 ;
-        foreach (var linkedlist in buckets)
+        var elements = 0 ;
+        foreach ( var linkedlist in buckets )
         {
-            full += (linkedlist != null) ? 1 : 0 ;
+            if ( linkedlist != null )
+            { 
+                elements += linkedlist.len ;   
+            }
         }
-        
-        return full / buckets.Length ;
+        return elements / buckets.Length ;
     }
 }

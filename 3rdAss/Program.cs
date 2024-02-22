@@ -5,23 +5,22 @@ class Program
     private static void Main()
     {
         var dict = new StringsDictionary() ;
-        foreach (var row in File.ReadAllLines("Dictionary.txt"))
+        foreach ( var row in File.ReadAllLines( "Dictionary.txt" ) )
         {
-            var key = row.Split("|")[0] ;
-            var value = row.Split("|")[2] ;
-            
+            var key = row.Split( "|" )[ 0 ] ;
+            var value = row.Split( "|" )[ 2 ] ;
             dict.Add( key , value ) ;
         }
 
-        while (true)
+        while ( true )
         {
-            Console.WriteLine("Write the word , which definition you want to get .");
-            var input = Console.ReadLine().Trim().ToLower();
-            Console.WriteLine($"{input} => {dict.Get(input)}\n");
-            if (input == "STOP")
+            Console.WriteLine( "Write the word , which definition you want to get ." ) ;
+            var input = Console.ReadLine().Trim().ToLower() ;
+            Console.WriteLine( $"{ input } => { dict.Get( input ) }\n") ;
+            if ( input.Trim().ToLower() == "stop" )
             {
-                Console.WriteLine("See you soon !");
-                break;
+                Console.WriteLine( "See you soon !" ) ;
+                break ;
             }
         }
     }

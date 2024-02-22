@@ -1,6 +1,5 @@
 ﻿namespace _3rdAss;
 
-
 public class BST
 {
     public KeyValuePair pair ;
@@ -8,21 +7,21 @@ public class BST
     public BST lesser ;
     public BST greater ;
 
-    public void add(KeyValuePair input )
+    public void add( KeyValuePair input )
     {
-        Balance();
         switch ( pair == null )
         {
             case true :
                 pairValue = CalculateHash( input.Key ) ;
                 pair = input ;
+                Balance() ;
                 break ;
             case false :
-                switch ( CalculateHash(input.Key) > pairValue )
+                switch ( CalculateHash( input.Key ) > pairValue )
                 {
                     case true :
-                        if ( greater == null ) { greater = new BST() ; }
-                        greater.add( input ) ;
+                        greater ??= new BST();
+                        greater.add( input ) ; // ASK WHY IS IT TRANSPARENT .
                         break ;
                     case false :
                         if ( lesser == null ) { lesser = new BST() ; }
@@ -33,7 +32,7 @@ public class BST
         }
     }
 
-    public int Balance()
+    private int Balance()
     {
         var lefChildHeight = lesser != null ? lesser.Balance() : 0 ;
         var rightChildHeight = greater != null ? greater.Balance() : 0 ;
@@ -72,20 +71,16 @@ public class BST
     
     public string GetValueWithKey( string key )
     {
-        if (pair == null)
+        if ( pair == null )
         {
-            return null;
+            return null ;
         }
         if ( pair.Key == key )
         {
             return pair.Value ;
         }
         var current = CalculateHash( key ) > pairValue ? greater : lesser ;
-        if (current == null)
-        {
-            return null ;
-        }
-        return current.GetValueWithKey( key ) ;
+        return current == null ? null : current.GetValueWithKey( key );
     }
     
     public int CalculateHash( string key )
@@ -96,6 +91,6 @@ public class BST
         {
             result = result * prime + elemant ;
         }
-        return result ; 
+        return Math.Abs( result ) ; 
     }
 }

@@ -4,40 +4,39 @@ public class LinkedList
 {
     private LinkedListNode first;
     private LinkedListNode lastNode ;
-    private BST collisions { get; set; }
-
+    public int len ;
     
-    public LinkedList(BST damm)
+    public void Add( KeyValuePair pair , int hash )
     {
-        collisions = damm ;
-    }
-
-    public BST GetCollisions()
-    {
-        return collisions ;
-    }
-    
-    public void Add(KeyValuePair pair)
-    {
+        var current = first ;
+        while ( current != lastNode )
+        {
+            if ( hash == current.HashValue )
+            {
+                if ( current.status == false )
+                {
+                    current.status = true ;
+                    current.colisions = new BST();
+                    current.colisions.add( current.Pair ) ;
+                }
+                current.colisions.add( pair ) ;
+            }
+            current = current.Next ;
+        }
+        
         if ( first == null )
         {
             first = new LinkedListNode(pair) ;
             lastNode = first ;
+            first.HashValue = hash ;
+            len += 1 ; 
         }
         else
         {
             lastNode.Next = new LinkedListNode( pair ) ;
             lastNode = lastNode.Next ;
-        }
-
-        var current = first ;
-        while ( current != lastNode )
-        {
-            if (current.Pair.Key.Equals(pair.Key))
-            {
-                collisions.add(pair);
-            }
-            current = current.Next ;
+            first.HashValue = hash ;
+            len += 1 ;
         }
     }
 
@@ -56,34 +55,34 @@ public class LinkedList
             if ( current.Pair.Key.Equals( key ) && current.Next.IsNull() )
             {
                 previous.Next = null ;
-                break;
+                break ;
             }
             if ( current.Pair.Key.Equals( key ) )
             {
                 previous.Next = current ;
+                break ;
             }
             previous = current ;
             current = current.Next ;
         }
     }
 
-    public string GetItemWithKey(string key)
+    public string GetItemWithKey( string key , int hash )
     {
-        var current = first ;
-        if (first == null)
+        if ( first == null )
         {
-            Console.WriteLine("The list is completely empty . There is no such key here .");
+            Console.WriteLine("The list is completely empty . There is no such key here .") ;
             return null ;
         }
 
+        var current = first ;
         while ( true ) 
         {
             if ( current.Pair.Key.Equals( key ) )
             {
-                var tryCollisions = collisions.GetValueWithKey(key);
-                if (tryCollisions != null)
+                if ( current.status && current.HashValue.Equals( hash ) )
                 {
-                    return $"{current.Pair.Value} || {tryCollisions}" ;
+                    return current.colisions.GetValueWithKey( key ) ;
                 }
                 return current.Pair.Value ;
             }
@@ -105,7 +104,6 @@ public class LinkedList
             temporaryList.Add(current.Pair) ;
             current = current.Next ;
         }
-
         return temporaryList ;
     }
 }
